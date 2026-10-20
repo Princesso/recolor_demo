@@ -1,0 +1,25 @@
+{
+  "name": "recolor-demo",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Recolor objects in uploaded images with Cloudinary's gen_recolor generative AI transformation.",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "vite": "^7.3.7"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "fsevents": false
+  }
+}
