@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@layer components {
+  .btn {
+    @apply inline-flex h-9 cursor-pointer items-center justify-center gap-1 rounded-full px-7 text-base font-bold text-black transition duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-sm {
+    @apply h-8 px-4 text-sm;
+  }
+  .btn-primary {
+    @apply bg-stone-200 hover:bg-white;
+  }
+  .btn-danger {
+    @apply bg-red-200 hover:bg-red-100;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-stone-100 ring-1 ring-stone-500 hover:bg-stone-700;
+  }
+
+  .field-label {
+    @apply mb-1 text-sm font-semibold text-stone-200;
+  }
+  .text-input {
+    @apply w-full rounded-md border border-stone-600 bg-stone-900 px-3 py-2 text-sm text-stone-100 outline-none focus:border-blue-400 aria-invalid:border-red-400;
+  }
+
+  .pane {
+    @apply flex min-w-0 flex-col gap-3 rounded-xl bg-white p-3 text-stone-900 shadow-lg;
+  }
+  .pane-title {
+    @apply text-lg font-bold;
+  }
+
+  /*
+   * Both frames share the uploaded image's aspect ratio (set via --frame-ratio),
+   * so the original and result line up and the spinner overlay never shifts layout.
+   */
+  .frame {
+    @apply relative w-full overflow-hidden rounded-lg bg-stone-100;
+    aspect-ratio: var(--frame-ratio, 4 / 3);
+  }
+  .frame > img {
+    @apply absolute inset-0 size-full object-contain;
+  }
+  .frame[data-state="processing"] > img,
+  .frame[data-state="error"] > img {
+    @apply opacity-40 blur-[2px];
+  }
+  .overlay {
+    @apply absolute inset-0 hidden flex-col items-center justify-center gap-2 p-4 text-center;
+  }
+  .overlay-dim {
+    @apply bg-stone-900/70 text-white backdrop-blur-sm;
+  }
+  .frame[data-state="idle"] > .overlay[data-show="idle"],
+  .frame[data-state="processing"] > .overlay[data-show="processing"],
+  .frame[data-state="error"] > .overlay[data-show="error"] {
+    @apply flex;
+  }
+
+  .spinner {
+    @apply size-10 animate-spin rounded-full border-4 border-white/30 border-t-white;
+  }
+
+  .url-details summary {
+    @apply cursor-pointer text-xs font-semibold text-stone-500;
+  }
+  .url {
+    @apply mt-1 block text-xs break-all whitespace-normal;
+  }
+
+  .swatch-picker {
+    @apply relative block size-12 shrink-0 cursor-pointer overflow-hidden rounded-full ring-2 ring-stone-500 focus-within:ring-blue-400;
+  }
+  .swatch-picker input {
+    @apply absolute -inset-2 size-[calc(100%+1rem)] cursor-pointer border-0 p-0;
+  }
+
+  .preset {
+    @apply size-8 cursor-pointer rounded-full ring-2 ring-stone-700 ring-offset-2 ring-offset-stone-800 transition aria-checked:ring-white;
+  }
+
+  .chip {
+    @apply cursor-pointer rounded-full border border-stone-600 px-3 py-1 text-sm capitalize transition select-none hover:border-stone-400 has-checked:border-blue-400 has-checked:bg-blue-500/20 has-checked:text-white has-focus-visible:ring-2 has-focus-visible:ring-blue-400;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 3s;
+  }
+}
